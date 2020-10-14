@@ -33,6 +33,7 @@ class FightPage extends StatelessWidget {
           }
         },
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.play_arrow_rounded),
         onPressed: () {
