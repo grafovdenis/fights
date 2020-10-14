@@ -19,26 +19,12 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             RaisedButton(
-              child: Text("Go to fightPage"),
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => BlocProvider(
-                    lazy: true,
-                    create: (_) =>
-                        FightBloc(InitialFightState())..add(InitEvent()),
-                    child: FightPage(),
-                  ),
-                ));
-              },
-            ),
-            RaisedButton(
               child: Text("Enter as a player"),
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => BlocProvider(
                     lazy: true,
-                    create: (_) => FightBloc(InitialFightState())
-                      ..add(InitEvent(role: "player")),
+                    create: (_) => FightBloc()..add(InitEvent(role: "player")),
                     child: FightPage(),
                   ),
                 ));
@@ -50,8 +36,8 @@ class HomePage extends StatelessWidget {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => BlocProvider(
                     lazy: true,
-                    create: (_) => FightBloc(InitialFightState())
-                      ..add(InitEvent(role: "arbitrator")),
+                    create: (_) =>
+                        FightBloc()..add(InitEvent(role: "arbitrator")),
                     child: FightPage(),
                   ),
                 ));

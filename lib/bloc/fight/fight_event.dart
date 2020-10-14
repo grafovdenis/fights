@@ -11,3 +11,5 @@ class ChangePhaseEvent extends FightEvent {
 
   ChangePhaseEvent(this.phase);
 }
+
+class NextPhaseEvent extends FightEvent {}

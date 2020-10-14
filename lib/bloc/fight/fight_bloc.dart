@@ -30,7 +30,7 @@ class FightBloc extends Bloc<FightEvent, FightState> {
   StreamSubscription<String> phaseStreamListener;
   String _currentPhase;
   String role;
-  FightBloc(FightState initialState) : super(initialState);
+  FightBloc() : super(InitialFightState());
 
   void _init(String role) {
     /// MOCK init stream
@@ -38,14 +38,17 @@ class FightBloc extends Bloc<FightEvent, FightState> {
       return phases[t % phases.length];
     });
 
-    ///subscribe to phase stream
-    phaseStreamListener = phaseStream.listen((_phase) {
-      print(_phase);
-      _currentPhase = _phase;
-      this.add(ChangePhaseEvent(_currentPhase));
-    });
+    this.role = role ?? "player";
 
-    role = role ?? "player";
+    ///subscribe to phase stream
+    // phaseStreamListener = phaseStream.listen((_phase) {
+    //   print(_phase);
+    //   _currentPhase = _phase;
+    //   this.add(ChangePhaseEvent(_currentPhase));
+    // });
+
+    _currentPhase = "waiting";
+    this.add(ChangePhaseEvent(_currentPhase));
   }
 
   @override
@@ -59,6 +62,45 @@ class FightBloc extends Bloc<FightEvent, FightState> {
           break;
         case "briefing":
           yield BriefingState(role: role);
+          break;
+        case "beforeRound":
+          yield BeforeRoundState(role: role);
+          break;
+        case "round":
+          yield RoundState(role: role);
+          break;
+        case "pause":
+          yield PauseState(role: role);
+          break;
+        case "gamePause":
+          yield GamePauseState(role: role);
+          break;
+        case "idle":
+          yield IdleState(role: role);
+          break;
+        case "voting":
+          yield VotingState(role: role);
+          break;
+        case "judgeComment":
+          yield JudgeCommentState(role: role);
+          break;
+        default:
+          yield InitialFightState();
+      }
+    } else if (event is NextPhaseEvent) {
+      _currentPhase = phases[phases.indexOf(_currentPhase) + 1 > 8
+          ? 0
+          : phases.indexOf(_currentPhase) + 1];
+      print(phases.indexOf(_currentPhase));
+      switch (_currentPhase) {
+        case "waiting":
+          yield WaitingTimeState(role: role);
+          break;
+        case "briefing":
+          yield BriefingState(role: role);
+          break;
+        case "beforeRound":
+          yield BeforeRoundState(role: role);
           break;
         case "round":
           yield RoundState(role: role);
@@ -86,7 +128,7 @@ class FightBloc extends Bloc<FightEvent, FightState> {
 
   @override
   Future<void> close() {
-    phaseStreamListener.cancel();
+    phaseStreamListener?.cancel();
     return super.close();
   }
 }

@@ -22,6 +22,14 @@ class BriefingState extends FightState {
   });
 }
 
+class BeforeRoundState extends FightState {
+  final String role;
+
+  BeforeRoundState({
+    @required this.role,
+  });
+}
+
 class RoundState extends FightState {
   final String role;
 

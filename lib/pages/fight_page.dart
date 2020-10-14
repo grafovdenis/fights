@@ -1,95 +1,44 @@
+import 'package:fights/bloc/fight/fight_event.dart';
+import 'package:fights/pages/internal/waiting_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/fight/fight_bloc.dart';
 import '../bloc/fight/fight_state.dart';
+import 'internal/round_page.dart';
 
 class FightPage extends StatelessWidget {
   const FightPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FightBloc, FightState>(
-      builder: (context, state) {
-        if (state is InitialFightState) {
-          return Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
-        } else if (state is WaitingTimeState) {
-          if (state.role != "arbitrator") {
-            return DefaultTabController(
-              length: 2,
-              child: Scaffold(
-                appBar: AppBar(
-                  title: Text("Игровая комната"),
-                  bottom: TabBar(
-                    tabs: [
-                      Tab(
-                        child: Text("Чат"),
-                      ),
-                      Tab(
-                        child: Text("Информация"),
-                      ),
-                    ],
-                  ),
-                ),
-                body: TabBarView(
-                  children: [
-                    Text("Чат"),
-                    Text("Информация"),
-                  ],
-                ),
-              ),
+    return Scaffold(
+      body: BlocBuilder<FightBloc, FightState>(
+        builder: (context, state) {
+          print(state);
+          if (state is InitialFightState) {
+            return Scaffold(
+              appBar: AppBar(title: Text("Подключение...")),
+              body: Center(child: CircularProgressIndicator()),
             );
+          } else if (state is WaitingTimeState) {
+            return WaitingPage(role: state.role);
+          } else if (state is RoundState) {
+            return RoundPage(role: state.role);
           } else {
-            return DefaultTabController(
-              length: 3,
-              child: Scaffold(
-                appBar: AppBar(
-                  title: Text("Игровая комната"),
-                  bottom: TabBar(
-                    tabs: [
-                      Tab(
-                        child: Text("Управление"),
-                      ),
-                      Tab(
-                        child: Text("Чат"),
-                      ),
-                      Tab(
-                        child: Text("Информация"),
-                      ),
-                    ],
-                  ),
-                ),
-                body: TabBarView(
-                  children: [
-                    Text(
-                      "Управление",
-                    ),
-                    Text("Чат"),
-                    Text("Информация"),
-                  ],
-                ),
+            return Scaffold(
+              body: Center(
+                child: Text(state.toString()),
               ),
             );
           }
-        } else if (state is BriefingState) {
-          return Scaffold(
-            body: Center(
-              child: Text("Брифинг"),
-            ),
-          );
-        } else if (state is RoundState) {
-          return Scaffold(
-            body: Center(
-              child: Text("Раунд"),
-            ),
-          );
-        } else {
-          return Scaffold();
-        }
-      },
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.play_arrow_rounded),
+        onPressed: () {
+          context.bloc<FightBloc>().add(NextPhaseEvent());
+        },
+      ),
     );
   }
 }
