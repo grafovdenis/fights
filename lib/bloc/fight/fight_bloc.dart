@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:fights/bloc/chat/chat_bloc.dart';
 import 'package:fights/models/phases.dart';
 import 'package:fights/models/roles.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,6 +14,7 @@ class FightBloc extends Bloc<FightEvent, FightState> {
   String _currentPhase;
   String role;
   FightBloc() : super(InitialFightState());
+  ChatBloc chatBloc;
 
   void _init(String role) {
     /// MOCK init stream
@@ -30,6 +32,7 @@ class FightBloc extends Bloc<FightEvent, FightState> {
     // });
 
     _currentPhase = waiting;
+    chatBloc = ChatBloc()..add(InitChatEvent());
     this.add(ChangePhaseEvent(_currentPhase));
   }
 
@@ -111,6 +114,7 @@ class FightBloc extends Bloc<FightEvent, FightState> {
   @override
   Future<void> close() {
     phaseStreamListener?.cancel();
+    chatBloc?.close();
     return super.close();
   }
 }
