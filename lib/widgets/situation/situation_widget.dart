@@ -12,7 +12,7 @@ class SituationWidget extends StatelessWidget {
     return BlocBuilder<SituationBloc, SituationState>(
       cubit: context.bloc<FightBloc>().situationBloc,
       builder: (context, state) {
-        return Center(child: Text("Ситуация"));
+        return Center(child: Text('Ситуация'));
       },
     );
   }
