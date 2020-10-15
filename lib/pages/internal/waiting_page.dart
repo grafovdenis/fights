@@ -1,7 +1,8 @@
-import 'package:fights/widgets/chat/chat_widget.dart';
-import 'package:fights/widgets/info/info_widget.dart';
-import 'package:fights/widgets/management/management_widget.dart';
 import 'package:flutter/material.dart';
+
+import '../../widgets/arbitrator_manage/arbitrator_manage_widget.dart';
+import '../../widgets/chat/chat_widget.dart';
+import '../../widgets/info/info_widget.dart';
 
 class WaitingPage extends StatelessWidget {
   final String role;
@@ -25,7 +26,7 @@ class WaitingPage extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            if (role == 'arbitrator') ManagementWidget(),
+            if (role == 'arbitrator') ArbitratorManageWidget(),
             ChatWidget(),
             InfoWidget(),
           ],

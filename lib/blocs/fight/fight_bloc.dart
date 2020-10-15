@@ -1,11 +1,12 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:fights/blocs/internal/bloc/assistant_manage_bloc.dart';
 
 import '../internal/chat/chat_bloc.dart';
 import '../internal/history/history_bloc.dart';
 import '../internal/info/info_bloc.dart';
-import '../internal/management/management_bloc.dart';
+import '../internal/arbitrator_manage/arbitrator_manage_bloc.dart';
 import '../internal/player/player_bloc.dart';
 import '../internal/situation/situation_bloc.dart';
 import '../../models/phases.dart';
@@ -24,7 +25,8 @@ class FightBloc extends Bloc<FightEvent, FightState> {
   ChatBloc chatBloc;
   HistoryBloc historyBloc;
   InfoBloc infoBloc;
-  ManagementBloc managementBloc;
+  ArbitratorManageBloc arbitratorManageBloc;
+  AssistantManageBloc assistantManageBloc;
   PlayerBloc playerBloc;
   SituationBloc situationBloc;
 
@@ -37,7 +39,10 @@ class FightBloc extends Bloc<FightEvent, FightState> {
     situationBloc = SituationBloc();
     switch (this.role) {
       case arbitrator:
-        managementBloc = ManagementBloc()..add(InitManagemementEvent());
+        arbitratorManageBloc = ArbitratorManageBloc();
+        break;
+      case second:
+        assistantManageBloc = AssistantManageBloc();
         break;
       case player:
         playerBloc = PlayerBloc();
@@ -119,7 +124,8 @@ class FightBloc extends Bloc<FightEvent, FightState> {
     chatBloc?.close();
     historyBloc?.close();
     infoBloc?.close();
-    managementBloc?.close();
+    arbitratorManageBloc?.close();
+    assistantManageBloc?.close();
     playerBloc?.close();
     situationBloc?.close();
     return super.close();
