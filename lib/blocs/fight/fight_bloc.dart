@@ -1,14 +1,15 @@
 import 'dart:async';
 
-import 'package:fights/blocs/internal/chat/chat_bloc.dart';
-import 'package:fights/blocs/internal/history/history_bloc.dart';
-import 'package:fights/blocs/internal/info/info_bloc.dart';
-import 'package:fights/blocs/internal/management/management_bloc.dart';
-import 'package:fights/blocs/internal/player/player_bloc.dart';
-import 'package:fights/blocs/internal/situation/situation_bloc.dart';
-import 'package:fights/models/phases.dart';
-import 'package:fights/models/roles.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bloc/bloc.dart';
+
+import '../internal/chat/chat_bloc.dart';
+import '../internal/history/history_bloc.dart';
+import '../internal/info/info_bloc.dart';
+import '../internal/management/management_bloc.dart';
+import '../internal/player/player_bloc.dart';
+import '../internal/situation/situation_bloc.dart';
+import '../../models/phases.dart';
+import '../../models/roles.dart';
 
 import 'fight_event.dart';
 import 'fight_state.dart';

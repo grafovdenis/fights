@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:fights/models/_authors.dart';
-import 'package:fights/models/_messages.dart';
-import 'package:fights/models/message_model.dart';
-import 'package:fights/models/roles.dart';
+import '../../../models/_authors.dart';
+import '../../../models/_messages.dart';
+import '../../../models/message_model.dart';
+import '../../../models/roles.dart';
 import 'package:meta/meta.dart';
 
 part 'chat_event.dart';

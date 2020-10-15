@@ -1,10 +1,11 @@
-import 'package:fights/blocs/fight/fight_event.dart';
-import 'package:fights/pages/internal/waiting_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../blocs/fight/fight_event.dart';
 import '../blocs/fight/fight_bloc.dart';
 import '../blocs/fight/fight_state.dart';
 import 'internal/game_page.dart';
+import 'internal/waiting_page.dart';
 
 class FightPage extends StatelessWidget {
   const FightPage({Key key}) : super(key: key);

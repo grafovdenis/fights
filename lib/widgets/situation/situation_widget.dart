@@ -1,7 +1,8 @@
-import 'package:fights/blocs/fight/fight_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:fights/blocs/internal/situation/situation_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../blocs/fight/fight_bloc.dart';
+import '../../blocs/internal/situation/situation_bloc.dart';
 
 class SituationWidget extends StatelessWidget {
   const SituationWidget({Key key}) : super(key: key);

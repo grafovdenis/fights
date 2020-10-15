@@ -1,7 +1,8 @@
-import 'package:fights/blocs/fight/fight_bloc.dart';
-import 'package:fights/blocs/internal/player/player_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../blocs/fight/fight_bloc.dart';
+import '../../blocs/internal/player/player_bloc.dart';
 
 class PlayerWidget extends StatelessWidget {
   const PlayerWidget({Key key}) : super(key: key);

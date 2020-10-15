@@ -1,6 +1,6 @@
-import 'package:fights/models/message_model.dart';
-import 'package:fights/models/roles.dart';
 import 'package:flutter/material.dart';
+import '../../models/message_model.dart';
+import '../../models/roles.dart';
 
 class MessageWidget extends StatelessWidget {
   final MessageModel model;

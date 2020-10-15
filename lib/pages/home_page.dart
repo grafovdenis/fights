@@ -1,9 +1,10 @@
-import 'package:fights/blocs/fight/fight_event.dart';
-import 'package:fights/models/roles.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:fights/blocs/fight/fight_bloc.dart';
+import '../blocs/fight/fight_event.dart';
+import '../blocs/fight/fight_bloc.dart';
+import '../models/roles.dart';
 
 import 'fight_page.dart';
 
