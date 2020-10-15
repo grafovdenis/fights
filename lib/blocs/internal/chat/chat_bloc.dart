@@ -32,7 +32,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     );
 
     messagesStream.listen((message) {
-      this.add(AddRemoteMessage(message));
+      add(AddRemoteMessage(message));
     });
   }
 
@@ -54,7 +54,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   Stream<ChatState> mapEventToState(ChatEvent event) async* {
     if (event is InitChatEvent) {
       _init();
-      print("Initialized");
+      print('Initialized');
       yield ChatInitializedState(messages: _messages);
     } else if (event is AddRemoteMessage) {
       _messages.add(event.message);

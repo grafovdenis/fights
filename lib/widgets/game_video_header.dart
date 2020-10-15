@@ -21,8 +21,8 @@ class GameVideoHeader extends StatelessWidget implements PreferredSizeWidget {
       child: SafeArea(
         child: Column(
           children: [
-            view == null ? Container() : view,
-            tabs == null || tabs.length == 0
+            view ?? Container(),
+            tabs == null || tabs.isEmpty
                 ? Container()
                 : Container(
                     height: 48,

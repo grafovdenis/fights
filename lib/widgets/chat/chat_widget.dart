@@ -63,7 +63,7 @@ class ChatWidget extends StatelessWidget {
                       Flexible(
                         child: TextField(
                           decoration: InputDecoration(
-                              hintText: "Напишите свое сообщение"),
+                              hintText: 'Напишите свое сообщение'),
                         ),
                       ),
                       IconButton(

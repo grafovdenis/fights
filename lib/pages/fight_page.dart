@@ -23,7 +23,7 @@ class FightPage extends StatelessWidget {
             print(state);
             if (state is InitialFightState) {
               return Scaffold(
-                appBar: AppBar(title: Text("Подключение...")),
+                appBar: AppBar(title: Text('Подключение...')),
                 body: Center(child: CircularProgressIndicator()),
               );
             } else if (state is WaitingTimeState) {

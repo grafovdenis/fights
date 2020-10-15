@@ -11,21 +11,21 @@ class WaitingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     print(role);
     return DefaultTabController(
-      length: (role == "arbitrator") ? 3 : 2,
+      length: (role == 'arbitrator') ? 3 : 2,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Игровая комната"),
+          title: Text('Игровая комната'),
           bottom: TabBar(
             tabs: [
-              if (role == "arbitrator") Tab(child: Text("Управление")),
-              Tab(child: Text("Чат")),
-              Tab(child: Text("Информация")),
+              if (role == 'arbitrator') Tab(child: Text('Управление')),
+              Tab(child: Text('Чат')),
+              Tab(child: Text('Информация')),
             ],
           ),
         ),
         body: TabBarView(
           children: [
-            if (role == "arbitrator") ManagementWidget(),
+            if (role == 'arbitrator') ManagementWidget(),
             ChatWidget(),
             InfoWidget(),
           ],

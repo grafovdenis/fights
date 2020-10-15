@@ -47,7 +47,7 @@ class FightBloc extends Bloc<FightEvent, FightState> {
         break;
     }
 
-    this.add(ChangePhaseEvent(_currentPhase));
+    add(ChangePhaseEvent(_currentPhase));
   }
 
   @override

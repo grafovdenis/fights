@@ -12,7 +12,7 @@ class PlayerWidget extends StatelessWidget {
       cubit: context.bloc<FightBloc>().playerBloc,
       builder: (context, state) {
         return Center(
-          child: Text("Игра"),
+          child: Text('Игра'),
         );
       },
     );

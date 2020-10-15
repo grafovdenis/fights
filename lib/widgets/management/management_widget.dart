@@ -16,7 +16,7 @@ class ManagementWidget extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         } else {
-          return Center(child: Text("Management"));
+          return Center(child: Text('Management'));
         }
       },
     );

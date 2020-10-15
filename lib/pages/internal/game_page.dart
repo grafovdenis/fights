@@ -17,30 +17,30 @@ class _GamePageState extends State<GamePage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     Tab buildTab() {
       switch (widget.role) {
-        case "arbitrator":
-        case "second":
-          return Tab(child: Text("Управление"));
-        case "player":
-          return Tab(child: Text("Игра"));
+        case 'arbitrator':
+        case 'second':
+          return Tab(child: Text('Управление'));
+        case 'player':
+          return Tab(child: Text('Игра'));
         default:
-          return Tab(child: Text("События"));
+          return Tab(child: Text('События'));
       }
     }
 
     Widget buildWidget() {
       switch (widget.role) {
-        case "arbitrator":
+        case 'arbitrator':
           return ManagementWidget();
-        case "second":
+        case 'second':
           return ManagementWidget();
-        case "player":
+        case 'player':
           return PlayerWidget();
         default:
-          return Tab(child: Text("События"));
+          return Tab(child: Text('События'));
       }
     }
 
-    final TabController tabController = TabController(
+    final tabController = TabController(
       length: 3,
       vsync: this,
     );
@@ -51,8 +51,8 @@ class _GamePageState extends State<GamePage> with TickerProviderStateMixin {
         height: 281,
         tabs: [
           buildTab(),
-          Tab(child: Text("Ситуация")),
-          Tab(child: Text("Чат")),
+          Tab(child: Text('Ситуация')),
+          Tab(child: Text('Чат')),
         ],
         view: Container(
           color: Colors.yellow,
@@ -64,7 +64,7 @@ class _GamePageState extends State<GamePage> with TickerProviderStateMixin {
         controller: tabController,
         children: [
           buildWidget(),
-          Text("Ситуация"),
+          Text('Ситуация'),
           ChatWidget(),
         ],
       ),

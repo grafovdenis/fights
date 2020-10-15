@@ -12,7 +12,7 @@ class InfoWidget extends StatelessWidget {
       cubit: context.bloc<FightBloc>().infoBloc,
       builder: (context, state) {
         return Center(
-          child: Text("Информация"),
+          child: Text('Информация'),
         );
       },
     );

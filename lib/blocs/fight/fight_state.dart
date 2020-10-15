@@ -8,6 +8,7 @@ abstract class FightState {
 class InitialFightState extends FightState {}
 
 class WaitingTimeState extends FightState {
+  @override
   final String role;
 
   WaitingTimeState({
@@ -16,6 +17,7 @@ class WaitingTimeState extends FightState {
 }
 
 class BriefingState extends FightState {
+  @override
   final String role;
 
   BriefingState({
@@ -24,6 +26,7 @@ class BriefingState extends FightState {
 }
 
 class BeforeRoundState extends FightState {
+  @override
   final String role;
 
   BeforeRoundState({
@@ -32,6 +35,7 @@ class BeforeRoundState extends FightState {
 }
 
 class RoundState extends FightState {
+  @override
   final String role;
 
   RoundState({
@@ -40,6 +44,7 @@ class RoundState extends FightState {
 }
 
 class PauseState extends FightState {
+  @override
   final String role;
 
   PauseState({
@@ -48,6 +53,7 @@ class PauseState extends FightState {
 }
 
 class GamePauseState extends FightState {
+  @override
   final String role;
 
   GamePauseState({
@@ -56,6 +62,7 @@ class GamePauseState extends FightState {
 }
 
 class IdleState extends FightState {
+  @override
   final String role;
 
   IdleState({
@@ -64,6 +71,7 @@ class IdleState extends FightState {
 }
 
 class VotingState extends FightState {
+  @override
   final String role;
 
   VotingState({
@@ -72,6 +80,7 @@ class VotingState extends FightState {
 }
 
 class JudgeCommentState extends FightState {
+  @override
   final String role;
 
   JudgeCommentState({
@@ -80,6 +89,7 @@ class JudgeCommentState extends FightState {
 }
 
 class GameState extends FightState {
+  @override
   final String role;
 
   GameState({
