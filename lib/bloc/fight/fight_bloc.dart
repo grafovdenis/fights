@@ -1,29 +1,11 @@
 import 'dart:async';
 
+import 'package:fights/models/phases.dart';
+import 'package:fights/models/roles.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'fight_event.dart';
 import 'fight_state.dart';
-
-const phases = [
-  "waiting",
-  "briefing",
-  "beforeRound",
-  "round",
-  "pause",
-  "gamePause",
-  "idle",
-  "voting",
-  "judgeComment",
-];
-
-const roles = [
-  "arbitrator",
-  "player",
-  "second",
-  "judge",
-  "spectator",
-];
 
 class FightBloc extends Bloc<FightEvent, FightState> {
   Stream<String> phaseStream;
@@ -38,7 +20,7 @@ class FightBloc extends Bloc<FightEvent, FightState> {
       return phases[t % phases.length];
     });
 
-    this.role = role ?? "player";
+    this.role = role ?? player;
 
     ///subscribe to phase stream
     // phaseStreamListener = phaseStream.listen((_phase) {
@@ -47,7 +29,7 @@ class FightBloc extends Bloc<FightEvent, FightState> {
     //   this.add(ChangePhaseEvent(_currentPhase));
     // });
 
-    _currentPhase = "waiting";
+    _currentPhase = waiting;
     this.add(ChangePhaseEvent(_currentPhase));
   }
 
