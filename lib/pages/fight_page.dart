@@ -14,9 +14,12 @@ class FightPage extends StatelessWidget {
     return Scaffold(
       body: BlocListener<FightBloc, FightState>(
         listener: (context, state) {
-          Scaffold.of(context).showSnackBar(SnackBar(
-            content: Text("${state.phase}"),
-          ));
+          if (state.phase != null) {
+            Scaffold.of(context).hideCurrentSnackBar();
+            Scaffold.of(context).showSnackBar(SnackBar(
+              content: Text("${state.phase}"),
+            ));
+          }
         },
         child: BlocBuilder<FightBloc, FightState>(
           builder: (context, state) {
