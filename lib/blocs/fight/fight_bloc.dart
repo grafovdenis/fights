@@ -101,6 +101,13 @@ class FightBloc extends Bloc<FightEvent, FightState> {
         case idle:
         case voting:
         case judgeComment:
+          if (historyBloc != null &&
+                  ((_currentPhase == briefing ||
+                          _currentPhase == beforeRound) &&
+                      role != arbitrator) ||
+              (role == judge || role == spectator)) {
+            historyBloc = HistoryBloc();
+          }
           yield GameState(role: role, phase: _currentPhase);
           break;
         default:
