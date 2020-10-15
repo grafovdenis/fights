@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:fights/blocs/internal/bloc/assistant_manage_bloc.dart';
 
 import '../internal/chat/chat_bloc.dart';
 import '../internal/history/history_bloc.dart';
@@ -9,6 +8,7 @@ import '../internal/info/info_bloc.dart';
 import '../internal/arbitrator_manage/arbitrator_manage_bloc.dart';
 import '../internal/player/player_bloc.dart';
 import '../internal/situation/situation_bloc.dart';
+import '../internal/assistant_manage/assistant_manage_bloc.dart';
 import '../../models/phases.dart';
 import '../../models/roles.dart';
 
