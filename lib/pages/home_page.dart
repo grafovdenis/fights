@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:fights/blocs/fight/fight_bloc.dart';
-import 'package:fights/blocs/fight/fight_state.dart';
 
 import 'fight_page.dart';
 

@@ -1,9 +1,11 @@
 import 'dart:async';
 
 import 'package:fights/blocs/internal/chat/chat_bloc.dart';
+import 'package:fights/blocs/internal/history/history_bloc.dart';
 import 'package:fights/blocs/internal/info/info_bloc.dart';
 import 'package:fights/blocs/internal/management/management_bloc.dart';
 import 'package:fights/blocs/internal/player/player_bloc.dart';
+import 'package:fights/blocs/internal/situation/situation_bloc.dart';
 import 'package:fights/models/phases.dart';
 import 'package:fights/models/roles.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,10 +19,13 @@ class FightBloc extends Bloc<FightEvent, FightState> {
   String _currentPhase;
   String role;
   FightBloc() : super(InitialFightState());
+
   ChatBloc chatBloc;
+  HistoryBloc historyBloc;
+  InfoBloc infoBloc;
   ManagementBloc managementBloc;
   PlayerBloc playerBloc;
-  InfoBloc infoBloc;
+  SituationBloc situationBloc;
 
   void _init(String role) {
     /// make request here
@@ -67,7 +72,7 @@ class FightBloc extends Bloc<FightEvent, FightState> {
         case idle:
         case voting:
         case judgeComment:
-          yield GameState(role: role);
+          yield GameState(role: role, phase: event.phase);
           break;
         default:
           yield InitialFightState();
@@ -89,7 +94,7 @@ class FightBloc extends Bloc<FightEvent, FightState> {
         case idle:
         case voting:
         case judgeComment:
-          yield GameState(role: role);
+          yield GameState(role: role, phase: _currentPhase);
           break;
         default:
           yield InitialFightState();
@@ -101,9 +106,11 @@ class FightBloc extends Bloc<FightEvent, FightState> {
   Future<void> close() {
     phaseStreamListener?.cancel();
     chatBloc?.close();
+    historyBloc?.close();
+    infoBloc?.close();
     managementBloc?.close();
     playerBloc?.close();
-    infoBloc?.close();
+    situationBloc?.close();
     return super.close();
   }
 }

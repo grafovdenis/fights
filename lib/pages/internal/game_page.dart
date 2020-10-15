@@ -1,5 +1,7 @@
+import 'package:fights/models/roles.dart';
 import 'package:fights/widgets/chat/chat_widget.dart';
 import 'package:fights/widgets/game_video_header.dart';
+import 'package:fights/widgets/history/history_widget.dart';
 import 'package:fights/widgets/management/management_widget.dart';
 import 'package:fights/widgets/player/player_widget.dart';
 import 'package:flutter/material.dart';
@@ -17,10 +19,10 @@ class _GamePageState extends State<GamePage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     Tab buildTab() {
       switch (widget.role) {
-        case 'arbitrator':
-        case 'second':
+        case arbitrator:
+        case second:
           return Tab(child: Text('Управление'));
-        case 'player':
+        case player:
           return Tab(child: Text('Игра'));
         default:
           return Tab(child: Text('События'));
@@ -29,14 +31,14 @@ class _GamePageState extends State<GamePage> with TickerProviderStateMixin {
 
     Widget buildWidget() {
       switch (widget.role) {
-        case 'arbitrator':
+        case arbitrator:
           return ManagementWidget();
-        case 'second':
+        case second:
           return ManagementWidget();
-        case 'player':
+        case player:
           return PlayerWidget();
         default:
-          return Tab(child: Text('События'));
+          return HistoryWidget();
       }
     }
 
