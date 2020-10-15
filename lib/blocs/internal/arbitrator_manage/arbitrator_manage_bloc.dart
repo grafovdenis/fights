@@ -6,7 +6,8 @@ import 'package:meta/meta.dart';
 part 'arbitrator_manage_event.dart';
 part 'arbitrator_manage_state.dart';
 
-class ArbitratorManageBloc extends Bloc<ArbitratorManageEvent, ArbitratorManageState> {
+class ArbitratorManageBloc
+    extends Bloc<ArbitratorManageEvent, ArbitratorManageState> {
   ArbitratorManageBloc() : super(ArbitratorManageInitial());
 
   @override
