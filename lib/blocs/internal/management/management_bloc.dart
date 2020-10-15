@@ -9,10 +9,13 @@ part 'management_state.dart';
 class ManagementBloc extends Bloc<ManagementEvent, ManagementState> {
   ManagementBloc() : super(ManagementInitial());
 
+  void _init() {}
+
   @override
-  Stream<ManagementState> mapEventToState(
-    ManagementEvent event,
-  ) async* {
-    // TODO: implement mapEventToState
+  Stream<ManagementState> mapEventToState(ManagementEvent event) async* {
+    if (event is InitManagemementEvent) {
+      _init();
+      yield ManagementInitializedState();
+    }
   }
 }

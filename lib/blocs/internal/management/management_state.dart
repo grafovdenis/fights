@@ -4,3 +4,5 @@ part of 'management_bloc.dart';
 abstract class ManagementState {}
 
 class ManagementInitial extends ManagementState {}
+
+class ManagementInitializedState extends ManagementState {}

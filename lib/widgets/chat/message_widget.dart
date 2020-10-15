@@ -29,7 +29,8 @@ class MessageWidget extends StatelessWidget {
           style: TextStyle(color: buildColor(), fontWeight: FontWeight.w500),
           children: <TextSpan>[
             TextSpan(
-                text: '${model.message}', style: TextStyle(color: Colors.black)),
+                text: '${model.message}',
+                style: TextStyle(color: Colors.black)),
           ],
         ),
       ),

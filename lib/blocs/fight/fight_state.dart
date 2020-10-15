@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 
 abstract class FightState {
   FightState copyWith;
+  String role;
 }
 
 class InitialFightState extends FightState {}
@@ -74,6 +75,14 @@ class JudgeCommentState extends FightState {
   final String role;
 
   JudgeCommentState({
+    @required this.role,
+  });
+}
+
+class GameState extends FightState {
+  final String role;
+
+  GameState({
     @required this.role,
   });
 }

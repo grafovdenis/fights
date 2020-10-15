@@ -1,16 +1,18 @@
 import 'package:fights/widgets/chat/chat_widget.dart';
 import 'package:fights/widgets/game_video_header.dart';
+import 'package:fights/widgets/management/management_widget.dart';
+import 'package:fights/widgets/player/player_widget.dart';
 import 'package:flutter/material.dart';
 
-class RoundPage extends StatefulWidget {
+class GamePage extends StatefulWidget {
   final String role;
-  const RoundPage({Key key, this.role}) : super(key: key);
+  const GamePage({Key key, this.role}) : super(key: key);
 
   @override
-  _RoundPageState createState() => _RoundPageState();
+  _GamePageState createState() => _GamePageState();
 }
 
-class _RoundPageState extends State<RoundPage> with TickerProviderStateMixin {
+class _GamePageState extends State<GamePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     Tab buildTab() {
@@ -20,6 +22,19 @@ class _RoundPageState extends State<RoundPage> with TickerProviderStateMixin {
           return Tab(child: Text("Управление"));
         case "player":
           return Tab(child: Text("Игра"));
+        default:
+          return Tab(child: Text("События"));
+      }
+    }
+
+    Widget buildWidget() {
+      switch (widget.role) {
+        case "arbitrator":
+          return ManagementWidget();
+        case "second":
+          return ManagementWidget();
+        case "player":
+          return PlayerWidget();
         default:
           return Tab(child: Text("События"));
       }
@@ -48,7 +63,7 @@ class _RoundPageState extends State<RoundPage> with TickerProviderStateMixin {
       body: TabBarView(
         controller: tabController,
         children: [
-          Text("Управление"),
+          buildWidget(),
           Text("Ситуация"),
           ChatWidget(),
         ],

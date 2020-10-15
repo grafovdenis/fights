@@ -1,5 +1,5 @@
-import 'package:fights/bloc/chat/chat_bloc.dart';
-import 'package:fights/bloc/fight/fight_bloc.dart';
+import 'package:fights/blocs/internal/chat/chat_bloc.dart';
+import 'package:fights/blocs/fight/fight_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

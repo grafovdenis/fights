@@ -16,20 +16,23 @@ class GameVideoHeader extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
-        children: [
-          view == null ? Container() : view,
-          tabs == null || tabs.length == 0
-              ? Container()
-              : Container(
-                  height: 48,
-                  child: TabBar(
-                    controller: tabController,
-                    tabs: tabs,
+    return Theme(
+      data: Theme.of(context),
+      child: SafeArea(
+        child: Column(
+          children: [
+            view == null ? Container() : view,
+            tabs == null || tabs.length == 0
+                ? Container()
+                : Container(
+                    height: 48,
+                    child: TabBar(
+                      controller: tabController,
+                      tabs: tabs,
+                    ),
                   ),
-                ),
-        ],
+          ],
+        ),
       ),
     );
   }

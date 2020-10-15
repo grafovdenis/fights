@@ -1,4 +1,6 @@
 import 'package:fights/widgets/chat/chat_widget.dart';
+import 'package:fights/widgets/info/info_widget.dart';
+import 'package:fights/widgets/management/management_widget.dart';
 import 'package:flutter/material.dart';
 
 class WaitingPage extends StatelessWidget {
@@ -23,9 +25,9 @@ class WaitingPage extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            if (role == "arbitrator") Text("Управление"),
+            if (role == "arbitrator") ManagementWidget(),
             ChatWidget(),
-            Text("Информация"),
+            InfoWidget(),
           ],
         ),
       ),
