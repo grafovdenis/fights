@@ -45,12 +45,8 @@ class FightBloc extends Bloc<FightEvent, FightState> {
         break;
     }
 
-    switch (_currentPhase) {
-      case waiting:
-        infoBloc = InfoBloc();
-        break;
-      default:
-        break;
+    if (_currentPhase == waiting) {
+      infoBloc = InfoBloc();
     }
 
     add(ChangePhaseEvent(_currentPhase));
