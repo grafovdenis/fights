@@ -33,6 +33,7 @@ class FightBloc extends Bloc<FightEvent, FightState> {
     _currentPhase = waiting;
 
     chatBloc = ChatBloc()..add(InitChatEvent());
+    situationBloc = SituationBloc();
     switch (this.role) {
       case arbitrator:
         managementBloc = ManagementBloc()..add(InitManagemementEvent());
@@ -72,6 +73,12 @@ class FightBloc extends Bloc<FightEvent, FightState> {
         case idle:
         case voting:
         case judgeComment:
+          if (historyBloc != null &&
+                  ((event.phase == briefing || event.phase == beforeRound) &&
+                      role != arbitrator) ||
+              (role == judge || role == spectator)) {
+            historyBloc = HistoryBloc();
+          }
           yield GameState(role: role, phase: event.phase);
           break;
         default:

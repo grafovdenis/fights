@@ -4,6 +4,7 @@ import 'package:fights/widgets/game_video_header.dart';
 import 'package:fights/widgets/history/history_widget.dart';
 import 'package:fights/widgets/management/management_widget.dart';
 import 'package:fights/widgets/player/player_widget.dart';
+import 'package:fights/widgets/situation/situation_widget.dart';
 import 'package:flutter/material.dart';
 
 class GamePage extends StatefulWidget {
@@ -66,7 +67,7 @@ class _GamePageState extends State<GamePage> with TickerProviderStateMixin {
         controller: tabController,
         children: [
           buildWidget(),
-          Text('Ситуация'),
+          SituationWidget(),
           ChatWidget(),
         ],
       ),
